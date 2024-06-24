@@ -27,13 +27,15 @@ async def autoUpdate(context: ContextTypes.DEFAULT_TYPE):
     return None
     
 async def checkUpdates(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    msg = "Nenhum capítulo novo encontrado."
+    msg = ""
 
     updates = Util.checkForUpdates()
     if updates:
         data = Util.getData()
         for u in updates:
             msg += f"Lançamento de {u}: {data["manga"][u]["url"]+str(data["manga"][u]["chapter"]-1)}\n"
+    else:
+        msg = "Nenhum capítulo novo encontrado."
 
     await context.bot.send_message(chat_id=USER_ID, text=msg)
 
