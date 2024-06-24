@@ -4,5 +4,23 @@
             "user": "ProjectVinland_",
             "keywords": "Vinland Saga"
         }
+    },
+    "manga": {
+        "Vinland Saga": {
+            "url": "https://ww3.readvinlandsaga.com/chapter/vinland-saga-chapter-",
+            "chapter": 211
+        },
+        "Jujutsu Kaisen": {
+            "url": "https://ww3.readjujutsukaisen.com/chapter/jujutsu-kaisen-fan-scan-chapter-",
+            "chapter": 262
+        },
+        "Kagurabachi": {
+            "url": "https://readkagurabachimanga.com/chapter/kagurabachi-chapter-",
+            "chapter": 39
+        },
+        "Frieren": {
+            "url": "https://sousou-no-frieren.online/manga/sousou-no-frieren-",
+            "chapter": 131
+        }
     }
 }

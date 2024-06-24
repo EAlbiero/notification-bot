@@ -1,56 +1,36 @@
 import json
+import requests
 
 class Util():
-
     file = "websites.json"
-    websites = ""
 
-    def loadWebsites(func):
+    def updateChapter(mangas):
+        data = Util.getData()
 
-        def load(*args, **kwargs):
-            Util.websites = json.load(open(Util.file))
-            func(*args, **kwargs)
-            return func(*args, **kwargs)
-        
-        return load
+        for manga in mangas:
+            data["manga"][manga]["chapter"] += 1
+        with open(Util.file, "w") as f:
+            json.dump(data, f, indent=4)
 
-        
-    @loadWebsites
-    def getWebsiteList():
+    def checkForUpdates():
+        updates = []
+        data = Util.getData()
 
-        website_list = []
-        
-        for website in Util.websites.keys():
-            website_list.append(website)
-        
-        return website_list
-    
-    @loadWebsites
-    def getAccountsList(website: str):
+        for manga in data["manga"]:
+            rurl = data["manga"][manga]["url"]+str(data["manga"][manga]["chapter"])
+            r = requests.get(rurl)
 
-        accounts_list = []
+            # Casos em que o site redireciona para Home ao invés de retornar 404
+            if (r.status_code == 200) and (rurl == r.url[:-1]):
+                updates.append(manga)
 
-        for name in Util.websites[website].keys():
-            accounts_list.append(name)
+        if updates:
+            Util.updateChapter(updates)
+        return updates
 
-        return accounts_list
-    
-    @loadWebsites
-    def addAccount(website: str, name: str, url: str):
+    def getData(f = "websites.json"):
+        with open(f, 'r') as f_obj:
+            data = json.load(f_obj)
 
-        Util.websites[website][name] = url
-        aux = json.dumps(Util.websites, indent=4)
+        return data
 
-        with open("websites.json", "w") as new_json:
-            new_json.write(aux)
-
-
-w = Util.getWebsiteList()
-
-for i in w:
-    print(i)
-
-Util.addAccount('twitter', 'linkclick', 'linkclick-url')
-
-for a in Util.getAccountsList('twitter'):
-    print(a)
