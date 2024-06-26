@@ -4,7 +4,7 @@ import requests
 class Util():
     file = "websites.json"
 
-    def updateChapter(mangas):
+    def updateChapter(mangas: str):
         data = Util.getData()
 
         for manga in mangas:
@@ -21,7 +21,7 @@ class Util():
             r = requests.get(rurl)
 
             # Casos em que o site redireciona para Home ao invés de retornar 404
-            if (r.status_code == 200) and (rurl == r.url[:-1]):
+            if (Util.isChapterOut(r)) and (rurl == r.url[:-1]):
                 updates.append(manga)
 
         if updates:
@@ -33,4 +33,10 @@ class Util():
             data = json.load(f_obj)
 
         return data
+    
+    def isChapterOut(r: requests.Response):
+        if (r.status_code == 200) and (r.text.count("image") > 6):
+            return True
+        return False
+
 
