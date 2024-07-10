@@ -52,8 +52,12 @@ class Util():
         return data
     
     def isChapterOut(r: requests.Response):
-        if (r.status_code == 200) and (r.text.count("image") > 5):
-            return True
+        if ((r.status_code == 200) and 
+            (r.text.count("image") > 5) and 
+            (len(r.text) > 27000)):
+            
+                return True
+        
         return False
     
     def logActivity(msg: str):
