@@ -18,7 +18,7 @@ class Util():
         updates = []
         data = Util.getData()
 
-        Util.logActivity("Looking")
+        Util.logActivity("Looking for updates")
 
         for manga in data["manga"]:
 
@@ -39,6 +39,7 @@ class Util():
             Util.logActivity("Updating .json file")
             Util.updateChapter(updates)
             Util.logActivity("Finished updating .json file")
+            Util.logActivity("Returning all updates found")
         else:
             Util.logActivity("No updates where found, returning an empty list")
 
