@@ -30,6 +30,10 @@ async def autoUpdate(context: ContextTypes.DEFAULT_TYPE):
     
 async def checkUpdates(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
+    if update.message.from_user != USER_ID:
+        await update.message.reply_text("Usuário inválido")
+        return
+
     Util.logActivity("Received update request via user command. Looking for new updates")
     msg = ""
 
