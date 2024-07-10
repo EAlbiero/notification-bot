@@ -15,25 +15,29 @@ logging.basicConfig(
 )
 
 async def autoUpdate(context: ContextTypes.DEFAULT_TYPE):
+
+    Util.logActivity("Starting hourly updates check")
     msg = ""
 
     updates = Util.checkForUpdates()
     if updates:
         data = Util.getData()
         for u in updates:
-            msg += f"Lançamento de {u}: {data["manga"][u]["url"]+str(data["manga"][u]["chapter"]-1)}\n"
+            msg += f"Lançamento de {u}: {data['manga'][u]['url']+str(data['manga'][u]['chapter']-1)}\n"
     if msg:
         await context.bot.send_message(chat_id=USER_ID, text=msg)
     return None
     
 async def checkUpdates(update: Update, context: ContextTypes.DEFAULT_TYPE):
+
+    Util.logActivity("Received update request via user command. Looking for new updates")
     msg = ""
 
     updates = Util.checkForUpdates()
     if updates:
         data = Util.getData()
         for u in updates:
-            msg += f"Lançamento de {u}: {data["manga"][u]["url"]+str(data["manga"][u]["chapter"]-1)}\n"
+            msg += f"Lançamento de {u}: {data['manga'][u]['url']+str(data['manga'][u]['chapter']-1)}\n"
     else:
         msg = "Nenhum capítulo novo encontrado."
 
