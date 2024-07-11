@@ -4,7 +4,7 @@ from telegram.ext import ContextTypes, CommandHandler, Application
 from util import Util
 
 
-USER_ID = "624780392"
+USER_ID = 624780392
 BOT_TOKEN = '7305825348:AAET1L713EcAmHg7DwfgiFM6CUEAuruZMNc'
 
 
@@ -30,7 +30,7 @@ async def autoUpdate(context: ContextTypes.DEFAULT_TYPE):
     
 async def checkUpdates(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
-    if update.message.from_user != USER_ID:
+    if update.message.chat_id != USER_ID:
         await update.message.reply_text("Usuário inválido")
         return
 
