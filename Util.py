@@ -30,7 +30,7 @@ class Util():
             Util.logActivity(f"Trying to find chapter {chapter} from {manga}.\tURL: {rurl}")
 
             # Casos em que o site redireciona para Home ao invés de retornar 404
-            if (Util.isChapterOut(r)) and (rurl == r.url[:-1]):
+            if (Util.isChapterOut(r)) and (rurl[13:] == r.url[13:-1]):
                 updates.append(manga)
 
                 Util.logActivity("Chapter found!")
@@ -54,7 +54,7 @@ class Util():
     def isChapterOut(r: requests.Response):
         if ((r.status_code == 200) and 
             (r.text.count("image") > 5) and 
-            (len(r.text) > 27000)):
+            (len(r.text) > 29000)):
             
                 return True
         
