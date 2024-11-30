@@ -1,7 +1,7 @@
 import logging
 from telegram import Update
 from telegram.ext import ContextTypes, CommandHandler, Application
-from util import Util
+from Util import Util
 
 
 USER_ID = 624780392
