@@ -8,7 +8,7 @@
     "manga": {
         "Vinland Saga": {
             "url": "https://ww3.readvinlandsaga.com/chapter/vinland-saga-chapter-",
-            "chapter": 217
+            "chapter": 218
         },
         "Jujutsu Kaisen": {
             "url": "https://ww3.readjujutsukaisen.com/chapter/jujutsu-kaisen-fan-scan-chapter-",
@@ -16,7 +16,7 @@
         },
         "Kagurabachi": {
             "url": "https://readkagurabachimanga.com/chapter/kagurabachi-chapter-",
-            "chapter": 59
+            "chapter": 71
         },
         "Frieren": {
             "url": "https://sousou-no-frieren.online/manga/sousou-no-frieren-",
@@ -24,11 +24,15 @@
         },
         "HunterxHunter": {
             "url": "https://ww5.readhxh.com/chapter/hunter-x-hunter-chapter-",
-            "chapter": 409
+            "chapter": 411
         },
         "One Punch Man": {
             "url": "https://mangaonepunch.online/manga/one-punch-man-chapter-",
             "chapter": 211
+        },
+        "Berserk": {
+            "url": "https://readberserk.com/chapter/berserk-chapter-",
+            "chapter": 381
         }
     }
 }
