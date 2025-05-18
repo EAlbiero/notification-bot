@@ -1,6 +1,4 @@
-import json
-import requests
-import time
+import json, requests, time, os
 from bs4 import BeautifulSoup
 
 class Util():
@@ -65,7 +63,10 @@ class Util():
         
     
     def logActivity(msg: str):
+
         with open(Util.log, 'a') as log_file:
+            if os.path.getsize(Util.log) > 2*10**5:
+                log_file.truncate(0)
             log_file.write(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}]:\t{msg}\n")
 
 
