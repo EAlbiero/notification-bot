@@ -1,26 +1,16 @@
 {
-    "twitter": {
-        "project vinland": {
-            "user": "ProjectVinland_",
-            "keywords": "Vinland Saga"
-        }
-    },
     "manga": {
         "Vinland Saga": {
             "url": "https://ww3.readvinlandsaga.com/chapter/vinland-saga-chapter-",
             "chapter": 218
         },
-        "Jujutsu Kaisen": {
-            "url": "https://ww3.readjujutsukaisen.com/chapter/jujutsu-kaisen-fan-scan-chapter-",
-            "chapter": 275
-        },
         "Kagurabachi": {
             "url": "https://readkagurabachimanga.com/chapter/kagurabachi-chapter-",
-            "chapter": 72
+            "chapter": 79
         },
         "Frieren": {
             "url": "https://sousou-no-frieren.online/manga/sousou-no-frieren-",
-            "chapter": 136
+            "chapter": 134
         },
         "HunterxHunter": {
             "url": "https://ww5.readhxh.com/chapter/hunter-x-hunter-chapter-",
@@ -28,7 +18,7 @@
         },
         "One Punch Man": {
             "url": "https://readonepunch-man.com/one-punch-man-chapter-",
-            "chapter": 211
+            "chapter": 212
         },
         "Berserk": {
             "url": "https://readberserk.com/chapter/berserk-chapter-",

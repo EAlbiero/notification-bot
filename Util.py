@@ -1,6 +1,7 @@
 import json
 import requests
 import time
+from bs4 import BeautifulSoup
 
 class Util():
     file = "websites.json"
@@ -30,7 +31,7 @@ class Util():
             Util.logActivity(f"Trying to find chapter {chapter} from {manga}.\tURL: {rurl}")
 
             # Casos em que o site redireciona para Home ao invés de retornar 404
-            if (Util.isChapterOut(r)) and (rurl[13:] == r.url[13:-1]):
+            if (Util.isChapterOut(r)):
                 updates.append(manga)
 
                 Util.logActivity("Chapter found!")
@@ -52,13 +53,16 @@ class Util():
         return data
     
     def isChapterOut(r: requests.Response):
-        if ((r.status_code == 200) and 
-            (r.text.count("image") > 5) and 
-            (len(r.text) > 29000)):
-            
-                return True
+        if (r.status_code != 200):
+            return False
         
+        soup = BeautifulSoup(r.text, 'html.parser')
+        pages = soup.find_all(class_=['reading-content', 'js-pages-container', 'pages text-center', 'entry-content single-content'])
+        if pages:
+            pages = pages[0]
+            return len(pages.find_all(recursive=False)) > 5
         return False
+        
     
     def logActivity(msg: str):
         with open(Util.log, 'a') as log_file:
