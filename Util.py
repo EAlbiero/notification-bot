@@ -5,6 +5,7 @@ class Util():
     file = "websites.json"
     log = "log.txt"
 
+
     def updateChapter(mangas: str):
         data = Util.getData()
 
@@ -12,6 +13,7 @@ class Util():
             data["manga"][manga]["chapter"] += 1
         with open(Util.file, "w") as f:
             json.dump(data, f, indent=4)
+
 
     def checkForUpdates():
         updates = []
@@ -28,8 +30,7 @@ class Util():
 
             Util.logActivity(f"Trying to find chapter {chapter} from {manga}.\tURL: {rurl}")
 
-            # Casos em que o site redireciona para Home ao invés de retornar 404
-            if (Util.isChapterOut(r)):
+            if Util.isChapterOut(r):
                 updates.append(manga)
 
                 Util.logActivity("Chapter found!")
@@ -44,20 +45,26 @@ class Util():
 
         return updates
 
-    def getData(f = "websites.json"):
+
+    def getData():
+        f = Util.file
         with open(f, 'r') as f_obj:
             data = json.load(f_obj)
 
         return data
     
+
     def isChapterOut(r: requests.Response):
         if (r.status_code != 200):
             return False
         
         soup = BeautifulSoup(r.text, 'html.parser')
-        pages = soup.find_all(class_=['reading-content', 'js-pages-container', 'pages text-center', 'entry-content single-content'])
+        pages = soup.find_all(class_=['reading-content', 'js-pages-container', 'pages text-center', 'entry-content single-content', 'wp-manga-chapter-img'])
+        if ('frieren' in r.url):
+            print(r.text)
         if pages:
             pages = pages[0]
+            print(r.url, len(pages.find_all(recursive=False)) > 5)
             return len(pages.find_all(recursive=False)) > 5
         return False
         
