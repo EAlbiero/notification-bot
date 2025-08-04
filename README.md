@@ -1,0 +1,1 @@
+Este repositório guarda o código de um bot no Telegram utilizado para enviar notificações baseadas em lançamentos de mangás
