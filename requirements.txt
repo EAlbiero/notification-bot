@@ -1,0 +1,9 @@
+logging
+requests
+azure-functions
+azure-core
+azure-identity
+python-telegram-bot
+python-telegram-bot[job-queue]
+beautifulsoup4
+datetime
