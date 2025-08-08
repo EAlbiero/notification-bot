@@ -1,5 +1,7 @@
 websites.json
 .vscode
+.vscode/*
+
 config.json
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -165,3 +167,5 @@ cython_debug/
 #.idea/
 websites.json
 log.txt
+
+.python_packages
